@@ -1,4 +1,8 @@
 
+using Microsoft.EntityFrameworkCore;
+using Server.Data;
+using Server.Services;
+
 namespace Server
 {
     public class Program
@@ -13,17 +17,30 @@ namespace Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            // שירותים עבור ה-AI
+            builder.Services.AddHttpClient<AIService>();
+            builder.Services.AddScoped<AIService>();
+
             //הרשאה לשרת לקבל בקשות מהכתובת של הפרונט
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowFrontend",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:5173") 
+                        policy.WithOrigins("http://localhost:5173")
                               .AllowAnyHeader()
                               .AllowAnyMethod();
                     });
             });
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 36)) 
+    ));
+            //עבור מיפוי הישויות
+            builder.Services.AddAutoMapper(typeof(Program));
+
 
             var app = builder.Build();
 
