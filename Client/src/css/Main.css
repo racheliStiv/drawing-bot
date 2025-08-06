@@ -1,0 +1,129 @@
+.Main {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+.main-body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.main-body > * {
+  min-width: 0; /* קריטי ל-flex */
+}
+.main-body > :first-child {
+  flex: 1;
+}
+
+.main-body > :last-child {
+  flex: 3;
+}
+
+.canvas-wrapper {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0; /* חובה כדי שflex יעבוד כמו שצריך */
+}
+
+.drawing-canvas {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(248, 246, 246);
+  border: 1px solid rgb(202, 196, 196);
+  box-sizing: border-box;
+  display: block;
+}
+
+
+/* ====== ChatPanel ====== */
+.ChatPanel {
+    justify-content: space-between;
+    height: 100%;
+    padding: 10px;
+    border-left: 2px solid #ccc;
+    display: flex;
+
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: #f4f4f4;
+}
+
+.ChatPanel h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.ChatPanel .messages {
+    flex: 2;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.ChatPanel .messages div {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    border-radius: 12px;
+    max-width: 80%;
+    display: inline-block;
+    direction: rtl;
+}
+
+.ChatPanel .messages div[style*="right"] {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.ChatPanel .messages div[style*="left"] {
+    background-color: #ececec;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.ChatPanel .input-row {
+    display: flex;
+    margin-top: 10px;
+}
+
+.ChatPanel input[type="text"] {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.ChatPanel button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ChatPanel button:hover {
+    background-color: #45a049;
+}
+
+
+/* ====== Header Controls ====== */
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-bottom: 2px solid #ccc;
+    flex-wrap: wrap;
+}

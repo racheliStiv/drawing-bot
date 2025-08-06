@@ -1,21 +1,12 @@
-import { useEffect } from 'react'
-import './App.css'
+import Main from './components/Main';
+import './App.css';
 
-function App() {
-useEffect(() => {
-  fetch("https://localhost:7270/WeatherForecast") 
-    .then(res => res.json())
-    .then(data => console.log(data));
-}, []);
-
+const App = () => {
   return (
-    <>
-      <div>
-       
-      </div>
-      
-    </>
-  )
-}
+    <div className="App">
+      <Main />
+    </div>
+  );
+};
 
-export default App
+export default App;
